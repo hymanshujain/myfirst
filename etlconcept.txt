@@ -3,6 +3,7 @@ information- data received is organizaed in meaningful maaner whic have meaning 
 knowledge- serving the purpose
 
 Data-> information->knowledge
+te
 
 Enterprise- integation and combination of variours department which are working togeather for business
 
