@@ -1,0 +1,153 @@
+premitive data type- int,double,char,boolean
+string is class not the data type
+system.out.println- is method to print the value in console with new line
+(just type syso and press crtl+space to see the method)
+system.out.print()- is a method to print the value in console without new line
+if-else if and nested if to identify the highest in 3 number
+while loop have disadvantage of infiinte loop if we are not defining increment logic
+for loop is used to a definite number of iteration
+I++ is post increment means first its assign the value to other variable than increment the values
+arreay used to store value of same type of variable
+int a=new int[4] is syntax to define arreay of size 4
+a.lenght is method to identify the arreay size
+to overcome the problem of same type to data, we can use object arreay instad of static arreay
+two dimension arreay is defined as int a[][]=new a[3][5]
+a.lenght show the length of row whereas a[0].length show the column size
+object can be defined as  <class name> <object reference variable> =new <class name> ()     
+object can  be defined as car a=new car(); each object have variable and method
+by using a=b we can set the now a refer to b (means whenever we use a.mod than this would show values of b)
+there are two type of method in java- static an non-static
+we have three type of method factory - no input no output, no input some output,som input some output
+once you creating the object than all non-static method and global variable given to this object
+for all static method we need to use the class 
+once we are creating the object than this will have all the non static variable/method
+method overloading- when the method name is same with different argument and input paramter within the same class
+we can not create method within the main() method
+method overload- same method with same number of argument or same method with different data type
+call by value- only copied of values passed to method
+call by reference- can be achived through passing the object of class
+method overriding- if parent and client having same method than child method always override the parent method.
+
+dynamic polymorphism/top casting- run time - when child object is refered by parent class reference variable. (in this case we can only use common override method)
+down casting- now available 
+interface- achiving multiple inharitance (is a relationship)/ no method body/only method phototype/ no static method defined/no main method/we can not create object of interface (instantiate)/variable is static and final in nature
+
+user the keyword 'implement' to implement the interface
+we have to override all the method of implemented interface in class. class also have their own method
+any variable which is defined on interface can be access through class.varname
+
+arraylist is dynamic. this will keep increasing on adding the new record.new Arraylist() will create the object
+ar.add() is used to add the new record in list
+ar.size() to know the number of records in arraylist. array list used index starting from 0 to 1,2,3,....
+ar.get(1) will fetch the first index member form the array list.
+
+hastable is used to provide the key and values. all the member is identified through the key i.e. h.get(<keyvalue>)
+hastable use h.put() method to add the new member in hastable.
+
+a framework to store and manipulate the object in java- java.utils package
+operation-searching,insertion,deletion,manipulation,sorting
+interface-set,list,queue,deque
+class-Arraylist,vector,Linkedlist,hasset,treeset,priorityqueue
+array index- dynamic size,can contain duplicate values,maintain insertation order,synchronized,allow random access to fetch the element
+array index-how to add user defined object (addall,removeall,
+
+linkedlist- implement list nad dequeue interface, collection of node
+(each node contain data and reference) linklist start with head and head alway reffering to first node..last node refer to null-singly linled list
+addfirst,addlast,removefirst,removelast,ll.get(index),ll.set,ll.remove(index)
+for loop,advance for loop (for string str:ll),while loop,iteration
+
+"final" keyword is used to defined the variable as constant 
+"final" keyword use to prevent inheritance of parent class/ to prevent method overriding
+
+finally is used with try-catch block. whatever written inside the finally block,that code will be executed.this is independent of wheather excepton is ther or not.use to close the connection
+
+finalize is used with garbage collector. if we have some object without reference variable than garbage collector will destory such object to free some
+space within memory.system.gc() will call garbage collecton.'finalize' method will execute just before garbage colletor.	
+
+
+singleton is approach or pattern. singleton class is class that can have only one object (instance of class) at a time
+a) make a constructor as private
+b) write a static method that has return type of object of this singleton class (lazy intialization)
+
+Access modifier- public,protected,private,defatuls
+same package - (a) if inheritance appliend tha all 
+                (b) if inheritance not applied than other than private
+
+different pacage - (a) if inheritance than public and protected only
+                   (b) if inheritaance not applied - public only
+
+
+abstract class- atleast one abastract method (method without body) (abtract keyword used to define method)
+abstraction- means hiding the buisness logic.child class can override the abstract method when they are implementing or extending parent class
+abstract class can have abstract method as well as no abstrct method.
+
+interface- we have to achive 100% abstraction (we only need to define abastrat method without using abstract keyword)
+we can not create the object (instantisize) of abstract class or interace
+
+we can define final and static variable in interfact whereas we can define final,static,non-static variable in abstract class.
+
+there are two type of exception-exception is unpredicated behavior of code
+a) uncaught exception- the exception on which comile do not show any suggestion and can not be caught by comiler like airthmetic
+b) caught exception- the exception on which compiler 
+creating the reference variable without creating object, canceling the reference variable 
+
+try-catch block- try can not be define indepently.try{} contain the code which can have exception.
+printstacktrace() and getmessage() method provide the information about the location where the error occuring.
+throws keyword use when there is method chaining. so this basically throw exceptoin to calling function.
+throwable is superclass of all error and exception in java.object is super class of throwable class
+throw keyword is used to delivately throw the exception
+
+comoplie change .java file to .class file (byte code)
+class loader sub system- loading, linking,initialization
+loading- boot strap loading (responsible for core java api),extension loading (jre,jdk..),application loading
+linking- verify (verify the byte code),prepare,resoving
+initialziation
+
+method area- contain class related date (static variable)-for program head,stack and metod area are important
+heap- object related data
+stack- keep tracke of currently exeuctin method and its data.for every one tread there would be one stack. stack is further divied to stack frame. (local variable arreay,frame data,operand stack-this is like workspace)
+pc registrie- for every tread there is corresponding one register (hold the address of next executing instruction)
+native method stack- contain netive method used by the application.every thread there would be one corresponding one (native method information)
+
+execution engine- responsible for program execution
+a) interpreter-read and execute java program line wise line
+b)jit complier- intermediat code genertor,code optimizer,target code generator (useful for repeatively method )
+c) hotspot profiler is responisble to identify the hotspot
+c) GC
+
+native method interface
+native method library
+--------------------
+Super keyword used to call parent class construction. this should be use in child class constroutor and should be first statement
+
+
+
+----------------------------------------------------------------
+test Automation Framework such as programming language used, Type of framework used, Test Base Class (Initializing WebDriver, Implicit Waits), 
+How we separate Element locators and tests (Page Objects, Page Factory), Utility functions file, Property files, TestNG annotations, How we parameterize tests using Excel files, How we capture error screenshots, Generating reports(Extent Reports), Emailing reports, 
+
+Language: In our Selenium Project we are using Java language. Even though Selenium supports multiple languages, 
+we are using Java language is just because automation team developers expertise on this and better compactibility of Selenium with Java
+
+Type of Framework: In our project, we are using Data-driven Framework by using Page Object Model design pattern with Page Factory
+
+POM: As per the Page Object Model, we have maintained a class for every web page. Each web page has a separate class and that class holds the functionality and members of that web page. Separate classes for every individual test.
+
+Packages: We have separate packages for Pages and Tests. All the web page related classes come under Pages package and all the tests related classes come under Tests package.
+
+For example, Home Page and Login Page have a separate classes to store element locators. For the login test there would be a separate class which calls the methods from the Home Page class and Login Page class.
+
+I will explain based on the below mentioned test automation framework structure.
+
+
+Properties file: This file (config.properties) stores the information that remains static throughout the framework such as browser specific information, application URL, screenshots path etc.
+
+Test Data: All the historical test data will be kept in excel sheet (controller.xlsx). By using ‘controller.xlsx’, we pass test data and handle data driven testing. We use Apache POI to handle excel sheets.
+
+Maven: Using Maven for build, execution and dependency purpose. Integrating the TestNG dependency in POM.xml file and running this POM.xml file using Jenkins.
+
+Jenkins: By using Jenkins CI (Continuous Integration) Tool, we execute test cases on daily basis and also for nightly execution based on the schedule
+
+
+----------------------------------------------------------------------
+

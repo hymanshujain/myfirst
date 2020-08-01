@@ -1,0 +1,378 @@
+selenium is opensource automation tools.it dont have any gui.this is just collection of APIs.its support multiple language.
+its support only web application. this does not support desktop application
+its support multiple browser.this is very lightweight.
+
+a) selenium IDE (b) selenium rc-outdated (c) selenium webdriver (ver-3.11)(d) selinium grid
+
+limitation-
+(a) due to open source no proper support
+(b) comptitor is QTP which is licensed tool
+
+go to "selenium hq" and search ->download selenium for java webdrive->unzip it
+open the eclips->right click on project->java build path->Libraries
+Add jar-> provide the path of jar file 
+add external jar- provide the path of lib jar files
+under project -> we will able to see reference libraries
+----------------------------------------------------------------
+System.setProperty("webdriver.chrome.driver", "C:\\WSPACE\\Driver\\chromedriver.exe");
+WebDriver driver = new ChromeDriver();
+driver.get("http://192.168.1.42:8346/");
+----------------------------------------------------------------------
+driver.findElement(By.id("logintxtUserName")).sendKeys("terminus");
+driver.findElement(By.id("logintxtPassword")).sendKeys("123456");
+driver.findElement(By.className("loginSubmitBtn")).click();
+------------------------
+how to identify web element- 
+ID-1
+Name-2
+xpath-1
+CSS path-2
+Class name-not recommanded
+Linktext- for 
+
+Linkpartialtext- for long hyperlinketext
+
+------------------------------------------------------------------
+Alert alert=driver.switchto().alert()
+alert.accept()//ok
+alert.dismissed()//cancel
+
+----------------------------------------------------------------
+
+for mouse related action like hover,drag and drop and any other we user "Action" class
+for drop down values selection we user "Select" class
+
+Select objselect=new Select(driver.findElement(By.xpath("//select[@name='fromCity']")));
+		objselect.selectByVisibleText("Manali");
+		Select objselect1=new Select(driver.findElement(By.xpath("//select[@name='toCity']")));
+		objselect1.selectByVisibleText("Delhi");
+		
+		
+for mouseover - we need to use Action class,action class need to pass instance of driver
+Action action=new Action(driver)
+action.movetoelement(findelement.(By.linktext="about us").build().perform()
+drive.findelement.(By.name="fleet").click()
+
+to maximize the window- driver().manage().windows().maximize
+to delete the cookies- driver().manage().Deleteallcookies()
+
+for drag and drop- 
+Action action=new Action();
+action.holdanddrag (<source web element>).movetoelement().<target webelement>.release().build().perform()
+
+sometime page load very slow like ecommerce site or qa environment, ins such case selenium can throw the error like element not found or element
+not visiable etc.
+to over come this problem
+driver().manage().timeout().pageloadtimeout(40,timeunits,SECONDS)\\pageloadtimeout and implicitwait are dynamic wait
+driver().manage().timeout().implcitwait(30,timeunits.seconds)\\ this is global wait and applies for all element on page
+(after the page is fully loaded just wait for 30 second ti perform the action.both are dynamic wait. if work complete before this time than this will not wait
+upto 30 seconds)
+Tread.sleep (this is static wait.every time script will wait for given time)
+
+------------------------------------------------------------------------------------
+drop down values selection
+Select objselect=new Select(driver.findelement (identified by id/name));
+objselect.selectbyvisibletext
+objselect.selectbyvalue
+objselect.selectbyindex(2)
+
+objselect.deselectbyindex/deselectbyvalue/deselectbyvisibletext
+----------------------------
+
+we should not  use aboslute xpath. 
+a) performance issue -custom xpath is faster than absolute xpath
+b) can be changed anytime in future
+c) not reliable
+
+sometimes we are not able to identify the webelement of id,name,class etc. in that cases,we use custom xpath
+driver.findelement(by.xpath("//input[@class='txtname']"))
+sometimes we observed that id value is dynamic and keep changing with every page refresh. in such cases,we use contains
+driver.findelement(by.xpath("//input[contains(@id,'test_')]"))
+driver.findelement(by.xpath("//input[startwith(@id,'test_')]"))
+driver.findelement(by.xpath("//input[ends-with(@id,'test_')]"))
+
+All the link are presented by <a> html tag
+driver.findelement(by.xpath("//a[contains(text(),'My Account')]")) //don't use @ sign as this is method
+
+how to identify the number of hyperlink on the page-
+List <webelement> Linklist = driver.findelements(by.tagname('a'))
+sysout.println 	(linklist.size())
+
+identify the number of text box 
+List list=driver.findelements(by.tagname('Input'))
+------------------------------------------------------------------------------------------
+sometimes we need to go other url than original one
+
+driver.navigate().to (<url>) //used to move other url whereas get used to launch the browser
+driver.navigate().back()  //to back on browser
+driver.navigate().forward()  //to click on forward button
+driver.navigate().refresh()  //to click on refresh button of browser
+
+getscreenshot() method is use to take the screen shot
+File src=((takescreenshot)driver).getscreenshot(OutputType.FILE)
+FileUtils.copyfile(src,new File(<location of harddis>/google.png)
+
+if some button/image or any other webelement is not loaded fully than we use explicit wait. example-city dropdown depends on state or enable of log in button
+this is only for specific element.for this purspose create one pulic static void method with three parameter driver,webelement,timout
+
+public static void clickon(Webdriver driver,Webelement location,int Timeout)
+{
+new WebDriverWait(driver,timeout).ignoring(stealelementreferenceException.class).untill(expectedcondition.elementtoBeClickable(locator)))
+locator.click
+}
+
+--------------------------------------------------------------------------
+
+javascriptexecutor is class and we have to cast our driver to this class
+exectuescript- method is used to execute javascript
+highlight any button- 
+a) cast the driver to javascriptexecution class
+b) identify background color use java script (element.get
+Value("backgroundcolor")
+c) apply the for loop 10 times while printing background color and new color alternate
+js.executescript("argument[0].style.background=' "+color+"'",element) 
+
+we can use this method for debugging the script while applying this on few element so that know where is the control currently
+
+-------------------------------------
+IsDisplayed()- if webelement is available on the page than this would return boolean value (true,false)
+IsEnabled()- if webelement is enabled than this would return boolean 'true' value
+isselected ()- applicable for dropdown,checkbox,radiobutton
+
+-----------------------------------------
+tr represent row whereas td represent column
+there are two ways to select the date from the callendar
+
+---------------------------------------------------------------------
+testng- is unit test framework. purpose of this is design test cases in properway. it can generate html report.this is also known as TDD framework.
+this has lot of annotation
+sequence of testcase can be defined
+dependency
+grouping
+data provider
+testng and junit-java
+nunit-c#
+
+This should not contain main method.always have 'test' keyword in class name.
+
+Annotation start with @ and each annotation should be associated with atleast one method.all the annotation starting with before known as precondition annotation.
+@Beforesuits
+@Befortest
+@Beforeclass
+@Beforemethod
+@test
+@aftermethod
+@afterclass
+@Aftersuits
+
+if there is multiple teest.then this would be execute in pair (beforemethod,test1,aftermethod) and (beforemethod,test2,aftermethod)
+in real time, only beforemethod,test,aftermethod used
+@test(priority=1) is used to decide the sequnece of multiple testcase
+
+refresh the project foldeer and under test-output, you will be able to see index.html(this file contains the test result)
+
+@test(priority=1,group=title) - group is use to group all the test case in logical manner
+@test(dependsonMethod="logintest") - this annotation will executed only when logintest is passed (i.e this test would show skipp)
+@test(invocationcount=10)- same test will execute 10 times
+@test(invocationtimeout=30000)- this testcase should executed in 30 second (only due to if program stuck with infinite loop)
+@test(expectedExpection="numberformatexception.class")- we are expecting this exception so testng will not mark this as failure.
+@test(enabled=false)- this will dispabled this method and will not exeucte
+
+Assert.assertequal("Actual","expected","message on fail")
+Assert.asserttru(<boolean_variable>) if values is true
+
+Testng.xml- is the template to control hundress of class (give the ability to run multiple class at one go)
+<Suite>
+<test>
+<Class>
+
+<Class name="Booking.bookhotel">
+<method>
+<include name="bookhotel_destination"></inclde>
+</methods>
+
+<include name="bookhotel_*"></inclde>
+
+
+
+every page contains webobjects/webelement and method/featureCollection of all web object/web elements is called object reportisty
+
+com.qa.pages- page laye(page liberaray)- Registraction.java (click on singinlink,fillregform,checklog,footerlink)
+com.qa.test- test layer- using the testng annotation .every webpage have corresponding testlayer
+com.qa.base- base class (testbase.java)- parent class of all the class-webdriver,properties,maximize,deletecookeis,pageloadtimeout,implicitwait,get(url)  
+com.qa.config-config.properties-url,username,pwd,browser,environmentvariable
+com.qa.testdata-testdata layer-testdate.xlsx
+com.qa.utils-Testutils- screenshot,sendmail,commonutility
+test-output folder- test Report- html/testng/xmlreport
+
+this is also called page chaining model as all the pages are interconnected. for example homepage is the landing page of login
+
+java ,selenium webdriver,testng,maven,aparchepoi api,extent report,log4japi,jenkins,gitte
+
+Maven is build management tool and if we need to download any api dependency than we can sear "selenium maven","testng maven" and put them in pom.xml
+we put all the things src/main/java and put testcase in src/test/java
+package name should be com.crm.qa.pages
+properties,create java class for each page
+Testbase class- write properfile read code in construtor, initialization() will contain to launch the url while reading driverinfo,url from prop file
+Login.java- this will extend testbase class and,define page factory like @Findby(name="username"), webelement username,validatloginpagetitle()
+			to initialize page factory, in the construtor,we need to define pagefactory.initelments(driver,this)
+			login(string un,string pwd) method on clicking the submit buttton this would move to homepage so this mentod will return new homepage()
+logintest.java- create construction and call superclass consturction using super(), @beformethod- call intialization()
+				need to create object of testbase class
+
+
+homepage.java- will exetend testbase class and define page factory
+homepagetest.java- create construction and call superclass consturction using super(),create login object (Loginpage loginpage) 
+					beforemethod- call initialization, call login() method to reach on homepage so need to define homepageobject
+
+Testcase should be sepearted executed. if we are executing all the testcase with same browsser.browser can crashed or might be issue to browser cookies or cache.so everytime before each testcase,launch the broser and login and execute the testcase  and closeit
+
+Test runner class- Create one source folder- src/main/resource-> testng.xml
+<suitename>
+<testname>
+<classname>
+------------------------------------------------------
+Log- capturing all the activities going on during the exectuion of program.
+log type- info, Warn, defug, Fatal
+log are generated through log4j api
+how it works-its read log 4j configuration from log4j.properties files
+where to create- inside the resources source folder (create log4j.properties files)
+#Root category-debug,console,file
+#Appender which writes to a console
+#Appender which writes to a file
+#defining maximum size of a file
+All the log will be generate under testoutpu with name 'application.log'
+
+Verbose=1 in testng.xml will provide minimal information on console. where as Verbose-0 will provide maximum information.
+--------------------------------------------------
+ArreayList is dynamic,maintain the order,synchronized, if this is not defined generic than this can store any type of object 
+ArreayList <integer> al=new ArreayList <integer> ();
+Al.put(1);
+for(i=0;i<al.size();i++){
+sout(al(i)
+}
+iterator() is method to use itereate objects stroed in arreaylist
+
+
+Linklist implement arreay and Dqueue interfact. this have two part. first part contain data and second part to refer another element.
+first element do not have any data where last element refer to null
+ll.add, ll.addfirst,ll.addlast
+ll.set(4,'test'), ll.get(4)
+ll.removefirst,ll.removelast,ll.remove(4)
+four way to iterat- using for, advance loop,iterator,while loop
+
+hasmap implement map interface and extend Abstractmap
+store the key-value pair
+hasmap contain only unique element
+can contain one null key and multiple null values
+maintain no order,non synchronized(not tread safe) so better performance.but fail fast condition (concurrent modifictation exception)
+
+hastable is similar to hasmap but this is synchronized.
+store the key-value pair
+key is stored the object->hasmap
+no null key or value
+hashtable contain unique key-value. if you have duplicate value in hashtable than this woule return only one key-value
+every hashmap is 32 bit unique number generated by jvm. this can be equl if we two object are same or cloning the object
+ht.put,ht.get(1),ht.hashcode(),ht.clone,ht.clear(),ht.containsvalues, Enumeration e=ht.elements()
+----------------------------------------------
+how to take screen shot-
+1. define one method in testutil.class (say-failed()). use the takescreenshot method.
+2. create one listner (say-custom listnere) class which is extending testutils and implementing Itestlistner. override onfailurettest() methoda
+ and call 'Failied method'
+3. in @test class define '@Listners(customlistner.class)
+
+-------------------------------------------
+1. create one method getdatafromexcel() in testutils class (this class will have the logic to read data from excel). 
+this method will return arreay object
+2. in the test class. use the annotation @dataprovider
+public Iterator <object []> gettestdata{
+Arreaylist<object []> testdata=testutils.getdatafromexcel
+return testdata.iterator
+}
+3. in the test classe.
+@test(dataprovider="gettestdata")
+
+public void halfewayregpagetest(String firstname,String lastname,String address1,String address2)
+
+-------------------------
+Hard assertaion- if any case failed then all other line of same @testcase will not run and exectuion is ended and marked the complete test as 'Failed'. hard assertion is good for 'open the browser','provide the login credential'.
+
+Soft asseration- if any case is get failed then this will not stop the exectuion. this will move on subsequent line and will priint all the assert once at the end and marked the testcase failed
+SoftAssert.sa=new SoftAssert();
+sa.assertvalue(true,false)
+sa.assertall()
+approach for soft assertaion- (1) define global and 'assertall' with every step of @test
+							  (2) define global and 'assertall' at teardown method (@afterclass notation)
+							  (3) define local for every @test and 'assertall' at the end of @test
+	
+------------------------------------
+
+javascript exector- how to draw a boarder 
+public static void drawboarder(Webelement element,Webdriver driver){
+ javascriptexecutor js=((javascriptexecutor) driver)
+js.executescript("argument[0].style.boarder='3px solid red",element)
+}
+public static void generatealert(String message,Webdriver driver){
+ javascriptexecutor js=((javascriptexecutor) driver)
+js.executescript("alert('"+message+"')")
+}
+public static void ClickelementbyJs(Webelement webelement,Webdriver driver){
+Javascriptexecutor js=((Javascriptexecutor)driver)
+js.execute("argument[0].click();",element);
+}
+
+
+js.execute("history.go(0)") //refresh the browser
+
+String title=js.exeute("return.document.title;").tostring();
+return title
+
+String pagetext=js.exeute("return.document.documentelement.innerText;").tostring();
+return pagetext
+
+js.execute("windows.scrollTo(0,document.body.scrollheight)") // to scrolling at the end of page
+
+js.execte("arugment[0].ScrollIntoview(true);",element) //scrolling untill reach on certain element
+
+
+----------------------------------------------------------------
+test Automation Framework such as programming language used, Type of framework used, Test Base Class (Initializing WebDriver, Implicit Waits), 
+How we separate Element locators and tests (Page Objects, Page Factory), Utility functions file, Property files, TestNG annotations, How we parameterize tests using Excel files, How we capture error screenshots, Generating reports(Extent Reports), Emailing reports, 
+
+Language: In our Selenium Project we are using Java language. Even though Selenium supports multiple languages, 
+we are using Java language is just because automation team developers expertise on this and better compactibility of Selenium with Java
+
+Type of Framework: In our project, we are using Data-driven Framework by using Page Object Model design pattern with Page Factory
+
+POM: As per the Page Object Model, we have maintained a class for every web page. Each web page has a separate class and that class holds the functionality and members of that web page. Separate classes for every individual test.
+
+Packages: We have separate packages for Pages and Tests. All the web page related classes come under Pages package and all the tests related classes come under Tests package.
+
+For example, Home Page and Login Page have a separate classes to store element locators. For the login test there would be a separate class which calls the methods from the Home Page class and Login Page class.
+
+I will explain based on the below mentioned test automation framework structure.
+
+
+Properties file: This file (config.properties) stores the information that remains static throughout the framework such as browser specific information, application URL, screenshots path etc.
+
+Test Data: All the historical test data will be kept in excel sheet (controller.xlsx). By using ‘controller.xlsx’, we pass test data and handle data driven testing. We use Apache POI to handle excel sheets.
+
+Maven: Using Maven for build, execution and dependency purpose. Integrating the TestNG dependency in POM.xml file and running this POM.xml file using Jenkins.
+
+Jenkins: By using Jenkins CI (Continuous Integration) Tool, we execute test cases on daily basis and also for nightly execution based on the schedule
+
+
+----------------------------------------------------------------------
+test
+-------------------------------------------
+~~~ for HUB, use this command: FHIR
+java -jar selenium-server-standalone-3.8.1.jar -role hub
+
+ http://192.168.1.2:4444/wd/hub
+
+~~~ for Node, use this command:
+java -Dwebdriver.chrome.driver="/Users/NaveenKhunteta/Downloads/chromedriver" -jar selenium-server-standalone-3.8.1.jar -role node -hub http://192.168.0.102:4444/grid/register
+
+C:\wspace\Driver\chromedriver.exe
+
+java -Dwebdriver.chrome.driver="C:\wspace\Driver\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.1.2:4444/grid/register

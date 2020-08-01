@@ -1,0 +1,234 @@
+data- desription of thing,event,activty and transascction,which is recorded and define particualr activity. this is raw format
+information- data received is organizaed in meaningful maaner whic have meaning and value
+knowledge- serving the purpose
+
+Data-> information->knowledge
+
+Enterprise- integation and combination of variours department which are working togeather for business
+
+ODS-data is not permanent.its volatile. its doesn't have histroical data. this is reason Datawhere house implemented.
+An ODS is meant for operational reporting and supports current or near real-time reporting requirements whereas a data warehouse is meant for historical and trend analysis reporting usually on a large volume of data. An ODS contains only a short window of data, 
+while a data warehouse contains the entire history of data
+
+OLTP->extract->ODS->transform->staging->Load->data warehouse (DSS-what if,forcast,summary)
+--------------------------------------------------------
+A data warehouse is designed to run query and analysis on historical data derived from transactional sources for business intelligence and data mining
+ purposes.
+
+DWH Characteristic
+a) subject oriented-retail,insurace,telecome,financial system (all data is related to single subject)
+b) intregated- intregate data from multiple system and extract menting full data of your question
+c) non volatile- historical, regulation and business need,industries play role to define the duration of non volatile
+d) time-veriant- information stored in dwh should be avialbe prescribed stimulated time
+
+key feature of dataware housing- 
+
+structure data - who will give you and how they want to seee the data
+better response time-partioning,indexing
+available histrical data
+options of adhoc queries- write the query to get anything from data.can be serve by BI tools.
+
+dwh contains histroical information that is made avialable for analysis of the business
+----------------------------------------------------------------------------------
+lecture-9 data mart- serving a single department or part of an organization (small chunk  of dwh). 
+fundametal difference between dwh and data mart is the scope
+close match with requirment
+smaller scope
+visulization 
+linked with other bi tools
+
+Data mart characteristic
+Restricted scope
+usabiltiy - useby particular group of user
+life cycle-data mart can be put on hold or abondon after getting the answrer after analysis of the problem
+scope of coverage
+tool depentent
+---------------------------------------------------------------------------
+DWH architecue- 
+centralized architecue-
+fedrated arti- single mart per department, data is logically considated but store in different physical location(based on department,function,location)
+multitiered- distributed data approach,data first comes in dwh and than distributed in individual data mart basecd on function,business 
+              this is combination of centralized+federated arti
+
+
+component of DWH
+a) source
+b) dwh maintenance and administrtor tool)data cleanling tools)
+c) ETL tool
+d) LDM to PDM tools
+e) warehouse database
+f) End user analysis tools
+
+
+stagging area is place where data kept from different source for cleansing/scubbling and check the quality and transform then load in to DWH
+
+row
+raw landing
+validation stagging
+functionality stagging
+------------------------------------------------------------------
+data modelling is a techinque to optimize the way the information is stored and used in the enterprises.
+its begin with the identification of main data group in the orgaziation.
+
+why should tester should know data modelling- 
+functinal and technical aspests
+completeness in design
+understanding
+db test execution
+validation
+
+data modelling techniques-
+a) ER Model- trandiont modelling technique. entitly are linked though relationship and avoiding the duplicasy. this can not be queried.mostly focus of oltp.its remove all reducncy in the data
+b) dimension modelling- a database structure that is optimized for online query and dwh tools. its comprises dimension and fact. 
+fact is a numeric value that a business wishes to count or sum. a dimension is descriptive
+
+measure is something that can be calculated
+
+Requirement gatering,CDM, LDM, PDM, database
+
+-------------------------------------------------------
+dimension(descriptive) and fact
+
+additive fact- show sum of measure group by all dimension (saleid,customerid,productid,dolor,day)
+semi-additive fact- show sum of meaure  group by few dimension (ex-banking, daily working hours fact can be summed through timekeeper dimension but not time dimension)
+non additive fact- no possiblity to group by any dimension (could not find meaningfull data)- example discount on the basis of client and matter
+factless fact- does not contain any measure, this is intersection of dimension. do not require any measure to aggregate.
+                example- fact_promo (productid,storeid,date,promo)
+-----------------------------------------------------------
+
+type of schema
+star schema- simple structure,great query effectivenss, Processing time
+slowflake schema- extension of start schema,each point of star is explode, more lookup table
+galaxy/fact constellation-multiple fact table (A GALAXY SCHEMA contains two fact table that share dimension tables between them)
+
+1) star have redulant data so not easy to maintain
+2) star have lower query complexity and easy to understanding
+3) lesst no of foreign query so its faster query exectuion
+4) good to datamart (having one to one relationship)
+5) single dimension table for each dimension
+6) usefull when dimension table have less row
+7) dimension are fact is in denormallized (snowflake dimension are normalized but fact table denormalized)
+8) top down approach
+-----------------------------------------------------------
+
+dimension contain reference data whereas fact contain measurable attribute
+
+conformed dimension- is having the same meaning when refer by different fact table (either they are identical or subset)- time,location dimension,location,
+ this is shared dimension between single data mart or multiple data mart.
+ 
+degenerated dimensino- this dimension is part of fact table which is not related to any dimension table but important to track any event.
+these are generally used for comparision purpose. example-sales transation number,invoice number
+ 
+junk dimension-It is just a collection of random transactional codes, flags and/or text attributes that are unrelated to any particular dimension.
+example data workflow related - example -orderred,shipped,delivered etc 
+
+role playing dimension- multiple atributes of one date forming the mulitple forignkey relationhsipe in fact table (request date,shipping date,deliverydate)
+
+Slowly changing dimension- A Slowly Changing Dimension (SCD) is a dimension that stores and manages both current and historical data over t
+which changes over a time- example- location. hybrid dimension is that which server the purpose of type-1 to type-3
+
+many times we come across the situatino when we need to insert one primary key multiple time. its called surrogate key or artificial unique key (histroical data)
+type-1 tx to NC (this is simply maintain the current status)
+
+type-2 based on highest surrogate key or endate is having null or currentflag or version or highhest enddate- we can identified the latest record
+
+type3- for this dimension - only have 2 entries i.e current and last one ( type usually only the current and previous value of dimension is kept in the database. 
+The new value is loaded into 'current/new' column and the old one into 'old/previous' )
+
+type4-Using historical table. In this method a separate historical table is used to track all dimension's attribute historical changes for each of the dimension. 
+The 'main' dimension table keeps only the current data e.g. customer and customer_history tables.
+
+
+now we can have type-3 (only haing 2 entries) while haing flag 'y' only these tow(type-2)
+
+----------------------------------------------------------------------------
+Data intregation is to intregate the data from various source into dWH or its equivalent system for a single unified view for various purpose. with the increase in volume
+velocity and verity data intregation become crucial step for many enterprises
+discover, cleansing, monitoring,transformaing and delivery
+
+Transform means converting the data in reuired format or desired- (merging,cleansing,scrubbing,aggregation)
+
+merging- join and union
+cleaning- process to removing the inconsistancy or inaccurancy within the data (removing null record or make tx,txa,texax as a unified)
+scrubbing- validation of data for any inaccuracy based on set of rule ,algoritham or 
+aggration- summarize the data 
+
+data conversion- to_date,to_char
+joining table- equi join,outer join
+filtering records- where
+mergeing table-union
+Aggrerate-sum,avg,count
+
+Load mean inserting/updateing/deleting the data into one or more table or files (for the downstrem system). full load or incremental load
+
+difference b/w ETL and ELT
+
+Role- sponsor,project manager,business analyst,functional analyst,SME,architecue,DWH implementator,ETL developer,ETL test, DB/unix administrator
+
+approach- knowledge capturing session, Requirment,architecue,database,ETL,Data Access,deploy
+
+data access- selection,drilling down,exception handling,calculation,graphis,data entry options,web based reporting,broadcasting
+
+test stratrgy/test plan- specific,practical,justified.this is depends on architecue and approach dueing the desging of overall project
+test framework- set of guidline/rule to produce better result/outcomes
+Asses source and target component-
+ETL testing- challenge is data volumne, create testdata as per business need.meta data testing, completeness of data,referenc data testing
+
+
+difference between database and Etl testing-
+1. database testing perofrome on oltp stystm (small system)
+2. this is used to verify the CURD Opertion to make ensure ACID property of data where as ETL is used read the data from differenet systm
+3. in database tesitng, data coming in uniform source whereas in ETL data comes from hetrogeneous system
+4. database have normalize form where DWH data have denomralized form
+
+different categories of ETL-
+new data warehouse
+migration testing
+change request
+OLAP/Dashboard/report testing
+
+different categories of ETL testing-
+1) Meta data testing-data type,data length,namingconversion,constriant,index (as per the data model specification)
+2) data completeness testing- all the data loading in target system. total no of record, aggreation created,soucre to target transformation.
+column data profiling- testing data creation which covers all data (unique value in column)
+3) data quality testing- to verify the accrucy of data (data profiling to do testing)
+duplicate data checking-
+data validation at entity level or business rule- join date is not future data/or verify old date
+data intregity - forieng key of employee table is not matching with department level due to not refreshing employee table (both need to be refresh)
+4) data transfrom testing- verification as per source-target mapping as per test data covering all business case
+whitebox- perpare small program while apply the logic and use this for small set of data
+blackbox- prepare testdata,run the ETL process and verify data as per the trnasformation
+5) ETL Regression - changes to metadata can cause regression
+6) reference data teesting- dimension data (this is data which do not change or slowly change)-if these are following to refernce data standred.all the changes should be track by audit trails
+7) incremental data - only consider the record which are created/updated after certain date.
+
+
+
+challenges  in ETL testing-
+     Data loss during ETL testing.
+    Duplicate data and Incompatibility.
+    Lack of inclusive test bed.
+    Testers have no benefits to execute ETL jobs by their own.
+    Data volume and complexity is huge.
+    Inefficient in procedures and business process.
+    Inconvenience securing and building test data.
+    Absence of business course information.
+-------------------------------------------------------
+
+  with temp as 
+(
+select username, date,versionid, RANK() over (partition by username order by versionid desc) as rnk from t
+)
+select username, rnk from t where rnk = 1
+
+
+----------------
+    select t.username, t.date, t.value.
+    from MyTable t.
+    inner join (
+    select username, max(date) as MaxDate.
+    from MyTable.
+    group by username.
+    ) tm on t.username = tm.username and t.date = tm.MaxDate.
+
+

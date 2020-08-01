@@ -1,0 +1,33 @@
+As you aware, My name is Himanshu Jain. i am working as a Senior QA engineer in Helm analytics pvt ltd Noid from last 5 year. before joing this organiztion, i worked for 
+Aithent technology gurgaon for almost 5 year. so overall i am having 12 year experience to provide qa service in insurance,investment banking,legal firm,BI and DWH application.
+i worked in complete life cycle of two projuct just from the begin of discover phase. 
+I would like to categerise my complete carrear in four differenct vertical
+
+1. DB 2.function testing and team buildup and managment 3. non function testing 4. functional automation
+throughout in the carrear i worked for db migration and datawarehousing testing as most of the project data centric projects. this is alwayst one of the strong zone
+function testing- i included in testcase,test plan creation/review and mentoring the team of 2-3 persons while addressing the various conflict issue. i also generate differenct
+matrices in order to provide the suggestion to manager for the improvement and modification of existing process
+Non-function testing - i did the performance/load testing using the jmeter,dynatrace and PAL reports
+
+on the function automation testing- our team take the initiave around 3 year back and doing the automation for stable part of application. 
+we are using cucumber framwork using the POM. we are using selenium bind with java language.
+
+i am very confortable of desiging the framework from the strech and as well work on existing framwork.very good exposure of page obect model in respest of selenium.
+from last 3 year, i am using selenium webdriver. currently working on webdriver version 3.14.1. we are using java as langauge
+i have very good hands on experience on tdd framework like junit/cucumber. have a experiance on Bdd tool like cucumber
+also worked on builid management tool like maven and has some fair idea of Gite and jenkin
+very comfortable to write desiging the component of framework.
+
+as a qa engineer,i have around 5 year with this company. also perform functional testing as and when required
+
+
+apart from this i have fair idea of most recent trends like agile, devops,git and jenkins tool operation.
+
+currently i am working on terminus application, which is BI tools for legal firm and enable the managet to identify the root cause of deviation and forcast 
+the future firm bottom line and top line. this is really have some feature like different type of charting, curreny conversion,drill down,creating the dashboard
+favourite,publish in community and many more.
+as a senior core memeber, i m responsible to verify the data from various heterogenous system and load them in stagging.
+i also responsible to further verify the data when its move to the data ware house after different type of transformation.
+i am also mentoring two junior resoure by scheduling their work and providing the assistance to them. 
+
+
